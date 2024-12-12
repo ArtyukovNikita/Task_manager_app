@@ -28,13 +28,14 @@ public class MainActivity extends AppCompatActivity {
     private GridLayout calendarGrid;
     private Calendar calendar;
     private SimpleDateFormat dateFormat;
+    private TextView selectedDateText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_main);
-
+        selectedDateText = findViewById(R.id.selected_date_text);
         // Настройка Toolbar
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -49,6 +50,7 @@ public class MainActivity extends AppCompatActivity {
         calendarPanel = findViewById(R.id.calendar_panel);
         monthText = findViewById(R.id.month_text);
         calendarGrid = findViewById(R.id.calendar_grid);
+        selectedDateText = findViewById(R.id.selected_date_text);
 
         ImageButton calendarButton = findViewById(R.id.calendar_button);
         ImageButton prevMonthButton = findViewById(R.id.prev_month_button);
@@ -146,9 +148,15 @@ public class MainActivity extends AppCompatActivity {
 
     // Метод для обработки выбора дня
     private void onDaySelected(int day) {
-        String message = "Вы выбрали день: " + day + " " + dateFormat.format(calendar.getTime());
+        String selectedDate = String.format(Locale.getDefault(), "%d %s", day, dateFormat.format(calendar.getTime()));
+        selectedDateText.setText("Selected Date: " + selectedDate);  // Обновляем текст
+
+        // Показываем Toast с выбранной датой
+        String message = "You selected: " + selectedDate;
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
+
         // Закрыть календарь после выбора
         calendarPanel.setVisibility(View.GONE);
     }
+
 }
