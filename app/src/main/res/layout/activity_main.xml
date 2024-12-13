@@ -94,4 +94,19 @@
         </GridLayout>
     </LinearLayout>
 
+    <!-- Кнопка добавления новой задачи -->
+    <ImageButton
+        android:id="@+id/btn_add"
+        android:layout_width="56dp"
+        android:layout_height="56dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        android:src="@android:drawable/ic_input_add"
+        android:contentDescription="Add Task"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:backgroundTint="@android:color/white"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
